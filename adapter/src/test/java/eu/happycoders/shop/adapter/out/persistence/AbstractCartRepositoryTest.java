@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import eu.happycoders.shop.application.port.out.persistence.CartRepository;
 import eu.happycoders.shop.application.port.out.persistence.ProductRepository;
 import eu.happycoders.shop.model.cart.Cart;
-import eu.happycoders.shop.model.cart.CartLineItem;
+import eu.happycoders.shop.model.cart.CartItem;
 import eu.happycoders.shop.model.cart.NotEnoughItemsInStockException;
 import eu.happycoders.shop.model.customer.CustomerId;
 import eu.happycoders.shop.model.product.Product;
@@ -64,9 +64,9 @@ public abstract class AbstractCartRepositoryTest<
 
     assertThat(cart).isNotEmpty();
     assertThat(cart.get().id()).isEqualTo(customerId);
-    assertThat(cart.get().lineItems()).hasSize(1);
-    assertThat(cart.get().lineItems().get(0).product()).isEqualTo(TEST_PRODUCT_1);
-    assertThat(cart.get().lineItems().get(0).quantity()).isEqualTo(1);
+    assertThat(cart.get().items()).hasSize(1);
+    assertThat(cart.get().items().get(0).product()).isEqualTo(TEST_PRODUCT_1);
+    assertThat(cart.get().items().get(0).quantity()).isEqualTo(1);
   }
 
   @Test
@@ -86,9 +86,9 @@ public abstract class AbstractCartRepositoryTest<
     Optional<Cart> cart = cartRepository.findByCustomerId(customerId);
     assertThat(cart).isNotEmpty();
     assertThat(cart.get().id()).isEqualTo(customerId);
-    assertThat(cart.get().lineItems()).hasSize(1);
-    assertThat(cart.get().lineItems().get(0).product()).isEqualTo(TEST_PRODUCT_2);
-    assertThat(cart.get().lineItems().get(0).quantity()).isEqualTo(2);
+    assertThat(cart.get().items()).hasSize(1);
+    assertThat(cart.get().items().get(0).product()).isEqualTo(TEST_PRODUCT_2);
+    assertThat(cart.get().items().get(0).quantity()).isEqualTo(2);
   }
 
   @Test
@@ -107,8 +107,8 @@ public abstract class AbstractCartRepositoryTest<
     Optional<Cart> cart = cartRepository.findByCustomerId(customerId);
     assertThat(cart).isNotEmpty();
     assertThat(cart.get().id()).isEqualTo(customerId);
-    assertThat(cart.get().lineItems())
-        .map(CartLineItem::product)
+    assertThat(cart.get().items())
+        .map(CartItem::product)
         .containsExactlyInAnyOrder(TEST_PRODUCT_1, TEST_PRODUCT_2);
   }
 

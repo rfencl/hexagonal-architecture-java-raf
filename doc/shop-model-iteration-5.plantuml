@@ -6,15 +6,15 @@ class Cart {
   +subTotal() : Money
 }
 
-Cart *-  CartLineItem
+Cart *-  CartItem
 
-class CartLineItem {
+class CartItem {
   -quantity : int
   +increaseQuantityBy(value : int)
   +subTotal() : Money
 }
 
-CartLineItem -> Product
+CartItem -> Product
 
 class Product {
   -id : ProductId

@@ -3,13 +3,13 @@ class Cart {
   -id : CustomerId
 }
 
-Cart *-  CartLineItem
+Cart *-  CartItem
 
-class CartLineItem {
+class CartItem {
   -quantity : int
 }
 
-CartLineItem -> Product
+CartItem -> Product
 
 class Product {
   -id : ProductId

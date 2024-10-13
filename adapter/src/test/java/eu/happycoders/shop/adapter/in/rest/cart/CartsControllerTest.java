@@ -99,7 +99,7 @@ class CartsControllerTest {
   }
 
   @Test
-  void givenSomeTestData_addLineItem_invokesAddToCartUseCaseAndReturnsUpdatedCart()
+  void givenSomeTestData_addItem_invokesAddToCartUseCaseAndReturnsUpdatedCart()
       throws NotEnoughItemsInStockException, ProductNotFoundException {
     CustomerId customerId = TEST_CUSTOMER_ID;
     ProductId productId = TEST_PRODUCT_1.id();
@@ -124,9 +124,8 @@ class CartsControllerTest {
   }
 
   @Test
-  void givenAnInvalidProductId_addLineItem_returnsAnError() {
-    CustomerId customerId = TEST_CUSTOMER_ID;
-    String productId = "";
+  void givenAnInvalidProductId_addItem_returnsAnError() {
+      String productId = "";
     int quantity = 5;
 
     Response response =
@@ -134,7 +133,7 @@ class CartsControllerTest {
             .port(TEST_PORT)
             .queryParam("productId", productId)
             .queryParam("quantity", quantity)
-            .post("/carts/" + customerId.value() + "/line-items")
+            .post("/carts/" + TEST_CUSTOMER_ID.value() + "/line-items")
             .then()
             .extract()
             .response();
@@ -143,7 +142,7 @@ class CartsControllerTest {
   }
 
   @Test
-  void givenProductNotFound_addLineItem_returnsAnError()
+  void givenProductNotFound_addItem_returnsAnError()
       throws NotEnoughItemsInStockException, ProductNotFoundException {
     CustomerId customerId = TEST_CUSTOMER_ID;
     ProductId productId = ProductId.randomProductId();
@@ -166,7 +165,7 @@ class CartsControllerTest {
   }
 
   @Test
-  void givenNotEnoughItemsInStock_addLineItem_returnsAnError()
+  void givenNotEnoughItemsInStock_addItem_returnsAnError()
       throws NotEnoughItemsInStockException, ProductNotFoundException {
     CustomerId customerId = TEST_CUSTOMER_ID;
     ProductId productId = ProductId.randomProductId();

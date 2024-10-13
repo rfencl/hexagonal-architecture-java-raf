@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class CartLineItem {
+public class CartItem {
 
   private final Product product;
   private int quantity;

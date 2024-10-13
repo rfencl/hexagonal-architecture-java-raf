@@ -1,6 +1,6 @@
 package eu.happycoders.shop.adapter.in.rest.cart;
 
-import eu.happycoders.shop.model.cart.CartLineItem;
+import eu.happycoders.shop.model.cart.CartItem;
 import eu.happycoders.shop.model.money.Money;
 import eu.happycoders.shop.model.product.Product;
 
@@ -9,12 +9,12 @@ import eu.happycoders.shop.model.product.Product;
  *
  * @author Sven Woltmann
  */
-public record CartLineItemWebModel(
+public record CartItemWebModel(
     String productId, String productName, Money price, int quantity) {
 
-  public static CartLineItemWebModel fromDomainModel(CartLineItem lineItem) {
-    Product product = lineItem.product();
-    return new CartLineItemWebModel(
-        product.id().value(), product.name(), product.price(), lineItem.quantity());
+  public static CartItemWebModel fromDomainModel(CartItem item) {
+    Product product = item.product();
+    return new CartItemWebModel(
+        product.id().value(), product.name(), product.price(), item.quantity());
   }
 }

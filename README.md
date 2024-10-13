@@ -103,7 +103,7 @@ The response should look like this:
 
 ```json
 {
-  "lineItems": [],
+  "items": [],
   "numberOfItems": 0,
   "subTotal": null
 }
@@ -124,7 +124,7 @@ After executing two of the four commands, you can see that the cart contains the
 
 ```json
 {
-  "lineItems": [
+  "items": [
     {
       "productId": "TTKQ8NJZ",
       "productName": "Plastic Sheeting",

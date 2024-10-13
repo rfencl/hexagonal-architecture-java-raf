@@ -22,23 +22,23 @@ public class Cart {
 
   @Getter private final CustomerId id; // cart ID = customer ID
 
-  private final Map<ProductId, CartLineItem> lineItems = new LinkedHashMap<>();
+  private final Map<ProductId, CartItem> items = new LinkedHashMap<>();
 
   public void addProduct(Product product, int quantity) throws NotEnoughItemsInStockException {
-    lineItems
-        .computeIfAbsent(product.id(), ignored -> new CartLineItem(product))
+    items
+        .computeIfAbsent(product.id(), ignored -> new CartItem(product))
         .increaseQuantityBy(quantity, product.itemsInStock());
   }
 
-  public List<CartLineItem> lineItems() {
-    return List.copyOf(lineItems.values());
+  public List<CartItem> items() {
+    return List.copyOf(items.values());
   }
 
   public int numberOfItems() {
-    return lineItems.values().stream().mapToInt(CartLineItem::quantity).sum();
+    return items.values().stream().mapToInt(CartItem::quantity).sum();
   }
 
   public Money subTotal() {
-    return lineItems.values().stream().map(CartLineItem::subTotal).reduce(Money::add).orElse(null);
+    return items.values().stream().map(CartItem::subTotal).reduce(Money::add).orElse(null);
   }
 }

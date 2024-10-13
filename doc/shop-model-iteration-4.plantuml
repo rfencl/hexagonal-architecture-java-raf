@@ -4,14 +4,14 @@ class Cart {
   +addProduct(product : Product, quantity : int)
 }
 
-Cart *-  CartLineItem
+Cart *-  CartItem
 
-class CartLineItem {
+class CartItem {
   -quantity : int
   +increaseQuantityBy(value : int)
 }
 
-CartLineItem -> Product
+CartItem -> Product
 
 class Product {
   -id : ProductId

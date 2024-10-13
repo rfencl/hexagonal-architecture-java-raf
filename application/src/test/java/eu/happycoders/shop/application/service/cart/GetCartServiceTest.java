@@ -44,6 +44,6 @@ class GetCartServiceTest {
     Cart cart = getCartService.getCart(TEST_CUSTOMER_ID);
 
     assertThat(cart).isNotNull();
-    assertThat(cart.lineItems()).isEmpty();
+    assertThat(cart.items()).isEmpty();
   }
 }

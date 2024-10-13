@@ -2,13 +2,13 @@
 class Cart {
 }
 
-Cart *-  CartLineItem
+Cart *-  CartItem
 
-class CartLineItem {
+class CartItem {
   -quantity : int
 }
 
-CartLineItem -> Product
+CartItem -> Product
 
 class Product {
 }

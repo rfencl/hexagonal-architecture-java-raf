@@ -35,7 +35,7 @@ public class AddToCartController {
 
   @POST
   @Path("/{customerId}/line-items")
-  public CartWebModel addLineItem(
+  public CartWebModel addItem(
       @PathParam("customerId") String customerIdString,
       @QueryParam("productId") String productIdString,
       @QueryParam("quantity") int quantity) {

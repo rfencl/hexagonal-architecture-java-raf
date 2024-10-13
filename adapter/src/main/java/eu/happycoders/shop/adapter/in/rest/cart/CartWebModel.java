@@ -10,11 +10,11 @@ import java.util.List;
  * @author Sven Woltmann
  */
 public record CartWebModel(
-    List<CartLineItemWebModel> lineItems, int numberOfItems, Money subTotal) {
+        List<CartItemWebModel> items, int numberOfItems, Money subTotal) {
 
   static CartWebModel fromDomainModel(Cart cart) {
     return new CartWebModel(
-        cart.lineItems().stream().map(CartLineItemWebModel::fromDomainModel).toList(),
+        cart.items().stream().map(CartItemWebModel::fromDomainModel).toList(),
         cart.numberOfItems(),
         cart.subTotal());
   }

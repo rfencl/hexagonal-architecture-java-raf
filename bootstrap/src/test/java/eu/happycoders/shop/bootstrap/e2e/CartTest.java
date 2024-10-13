@@ -24,7 +24,7 @@ class CartTest extends EndToEndTest {
 
   @Test
   @Order(1)
-  void givenAnEmptyCart_addLineItem_addsTheLineItemAndReturnsTheCartWithTheAddedItem()
+  void givenAnEmptyCart_addItem_addsTheItemAndReturnsTheCartWithTheAddedItem()
       throws NotEnoughItemsInStockException {
     Response response =
         given()
@@ -44,7 +44,7 @@ class CartTest extends EndToEndTest {
 
   @Test
   @Order(2)
-  void givenACartWithOneLineItem_addLineItem_addsTheLineItemAndReturnsACartWithTwoLineItems()
+  void givenACartWithOneItem_addItem_addsTheItemAndReturnsACartWithTwoItems()
       throws NotEnoughItemsInStockException {
     Response response =
         given()
@@ -65,7 +65,7 @@ class CartTest extends EndToEndTest {
 
   @Test
   @Order(3)
-  void givenACartWithTwoLineItems_getCart_returnsTheCart() throws NotEnoughItemsInStockException {
+  void givenACartWithTwoItems_getCart_returnsTheCart() throws NotEnoughItemsInStockException {
     Response response = given().port(TEST_PORT).get(CARTS_PATH).then().extract().response();
 
     Cart expectedCart = new Cart(TEST_CUSTOMER_ID);
@@ -77,7 +77,7 @@ class CartTest extends EndToEndTest {
 
   @Test
   @Order(4)
-  void givenACartWithTwoLineItems_delete_returnsStatusCodeNoContent() {
+  void givenACartWithTwoItems_delete_returnsStatusCodeNoContent() {
     given().port(TEST_PORT).delete(CARTS_PATH).then().statusCode(NO_CONTENT.getStatusCode());
   }
 

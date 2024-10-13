@@ -26,11 +26,11 @@ class CartTest {
     cart.addProduct(product1, 3);
     cart.addProduct(product2, 5);
 
-    assertThat(cart.lineItems()).hasSize(2);
-    assertThat(cart.lineItems().get(0).product()).isEqualTo(product1);
-    assertThat(cart.lineItems().get(0).quantity()).isEqualTo(3);
-    assertThat(cart.lineItems().get(1).product()).isEqualTo(product2);
-    assertThat(cart.lineItems().get(1).quantity()).isEqualTo(5);
+    assertThat(cart.items()).hasSize(2);
+    assertThat(cart.items().get(0).product()).isEqualTo(product1);
+    assertThat(cart.items().get(0).quantity()).isEqualTo(3);
+    assertThat(cart.items().get(1).product()).isEqualTo(product2);
+    assertThat(cart.items().get(1).quantity()).isEqualTo(5);
   }
 
   @Test
