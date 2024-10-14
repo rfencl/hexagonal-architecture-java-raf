@@ -9,8 +9,7 @@ import eu.happycoders.shop.model.product.Product;
  *
  * @author Sven Woltmann
  */
-public record CartItemWebModel(
-    String productId, String productName, Money price, int quantity) {
+public record CartItemWebModel(String productId, String productName, Money price, int quantity) {
 
   public static CartItemWebModel fromDomainModel(CartItem item) {
     Product product = item.product();

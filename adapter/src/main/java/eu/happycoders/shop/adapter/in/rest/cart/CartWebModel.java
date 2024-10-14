@@ -9,8 +9,7 @@ import java.util.List;
  *
  * @author Sven Woltmann
  */
-public record CartWebModel(
-        List<CartItemWebModel> items, int numberOfItems, Money subTotal) {
+public record CartWebModel(List<CartItemWebModel> items, int numberOfItems, Money subTotal) {
 
   static CartWebModel fromDomainModel(Cart cart) {
     return new CartWebModel(

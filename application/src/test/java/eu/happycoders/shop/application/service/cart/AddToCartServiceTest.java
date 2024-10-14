@@ -75,7 +75,7 @@ class AddToCartServiceTest {
 
   @Test
   void givenAnUnknownProductId_addToCart_throwsException() {
-    ProductId productId = ProductId.randomProductId();
+    ProductId productId = ProductId.generateProductId();
 
     ThrowingCallable invocation = () -> addToCartService.addToCart(TEST_CUSTOMER_ID, productId, 1);
 

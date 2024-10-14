@@ -2,6 +2,7 @@ package eu.happycoders.shop.model.product;
 
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 /**
  * A product ID value object (enabling type-safety and validation).
@@ -10,8 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public record ProductId(String value) {
 
-  private static final String ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-  private static final int LENGTH_OF_NEW_PRODUCT_IDS = 8;
+  private static final int PRODUCT_ID_LENGTH = 8;
 
   public ProductId {
     Objects.requireNonNull(value, "'value' must not be null");
@@ -20,12 +20,23 @@ public record ProductId(String value) {
     }
   }
 
-  public static ProductId randomProductId() {
+  public static ProductId generateProductId() {
+    char[] chars = new char[PRODUCT_ID_LENGTH];
+
     ThreadLocalRandom random = ThreadLocalRandom.current();
-    char[] chars = new char[LENGTH_OF_NEW_PRODUCT_IDS];
-    for (int i = 0; i < LENGTH_OF_NEW_PRODUCT_IDS; i++) {
-      chars[i] = ALPHABET.charAt(random.nextInt(ALPHABET.length()));
-    }
-    return new ProductId(new String(chars));
+    IntStream.range(0, PRODUCT_ID_LENGTH).forEach(i -> chars[i] = getaChar(random));
+    return new ProductId(String.valueOf(chars));
+  }
+
+  private static final String ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+
+  /**
+   * Returns the next Random character from the Alphabet.
+   *
+   * @param random
+   * @return
+   */
+  private static char getaChar(ThreadLocalRandom random) {
+    return ALPHABET.charAt(random.nextInt(ALPHABET.length()));
   }
 }

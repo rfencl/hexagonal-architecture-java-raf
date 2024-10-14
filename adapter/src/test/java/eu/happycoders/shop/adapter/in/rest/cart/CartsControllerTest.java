@@ -125,7 +125,7 @@ class CartsControllerTest {
 
   @Test
   void givenAnInvalidProductId_addItem_returnsAnError() {
-      String productId = "";
+    String productId = "";
     int quantity = 5;
 
     Response response =
@@ -145,7 +145,7 @@ class CartsControllerTest {
   void givenProductNotFound_addItem_returnsAnError()
       throws NotEnoughItemsInStockException, ProductNotFoundException {
     CustomerId customerId = TEST_CUSTOMER_ID;
-    ProductId productId = ProductId.randomProductId();
+    ProductId productId = ProductId.generateProductId();
     int quantity = 5;
 
     when(addToCartUseCase.addToCart(customerId, productId, quantity))
@@ -168,7 +168,7 @@ class CartsControllerTest {
   void givenNotEnoughItemsInStock_addItem_returnsAnError()
       throws NotEnoughItemsInStockException, ProductNotFoundException {
     CustomerId customerId = TEST_CUSTOMER_ID;
-    ProductId productId = ProductId.randomProductId();
+    ProductId productId = ProductId.generateProductId();
     int quantity = 5;
 
     when(addToCartUseCase.addToCart(customerId, productId, quantity))

@@ -22,10 +22,8 @@ public final class CartsControllerAssertions {
 
       String itemPrefix = "items[%d].".formatted(i);
 
-      assertThat(json.getString(itemPrefix + "productId"))
-          .isEqualTo(item.product().id().value());
-      assertThat(json.getString(itemPrefix + "productName"))
-          .isEqualTo(item.product().name());
+      assertThat(json.getString(itemPrefix + "productId")).isEqualTo(item.product().id().value());
+      assertThat(json.getString(itemPrefix + "productName")).isEqualTo(item.product().name());
       assertThat(json.getString(itemPrefix + "price.currency"))
           .isEqualTo(item.product().price().currency().getCurrencyCode());
       assertThat(json.getDouble(itemPrefix + "price.amount"))

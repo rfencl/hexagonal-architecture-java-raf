@@ -12,7 +12,7 @@ public class TestProductFactory {
 
   public static Product createTestProduct(Money price, int itemsInStock) {
     return new Product(
-        ProductId.randomProductId(), //
+        ProductId.generateProductId(), //
         "any name",
         "any description",
         price,
